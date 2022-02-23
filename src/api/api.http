@@ -1,0 +1,28 @@
+GET https://3001-sarahbejerano-jwtauthent-cuhq86ntua4.ws-us33.gitpod.io/api/hello
+
+
+###
+POST https://3001-sarahbejerano-jwtauthent-cuhq86ntua4.ws-us33.gitpod.io/api/register
+Content-Type: application/json
+
+{
+    "email" : "pensamiento1984@yahoo.es",
+    "password" : "12345"
+}
+
+###
+POST https://3001-sarahbejerano-jwtauthent-cuhq86ntua4.ws-us33.gitpod.io/api/login
+Content-Type: application/json
+
+{
+    "email" : "pensamiento1984@yahoo.es",
+    "password" : "12345"
+    
+}
+
+
+###
+GET https://3001-sarahbejerano-jwtauthent-cuhq86ntua4.ws-us33.gitpod.io/api/hello
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY0NTY0ODk4MiwianRpIjoiMzU0ZDM1ZDctZWZkNC00M2MyLWE3MDctYjgxNDk5NTM3ODgwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTIsIm5iZiI6MTY0NTY0ODk4MiwiZXhwIjoxNjQ1NjQ5ODgyfQ.vTRa_AH-zOkwD4LfKt7TJn9hdbs92KZo18PAAD4JsGo
+### es el portador del token 
+

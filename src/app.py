@@ -10,6 +10,9 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
+from flask_jwt_extended import JWTManager
+
+
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
@@ -37,10 +40,17 @@ setup_admin(app)
 # Add all endpoints form the API with a "api" prefix
 app.register_blueprint(api, url_prefix='/api')
 
+## this two lines must have in the code !!!!! And after the app variable is defined
+##change the super-secret with something else
+
+app.config["JWT_SECRET_KEY"] = "very-long-secret-nobody-know" 
+jwt = JWTManager(app)
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
+
 
 # generate sitemap with all your endpoints
 @app.route('/')
@@ -48,6 +58,7 @@ def sitemap():
     if ENV == "development":
         return generate_sitemap(app)
     return send_from_directory(static_file_dir, 'index.html')
+
 
 # any other endpoint will try to serve it like a static file
 @app.route('/<path:path>', methods=['GET'])
